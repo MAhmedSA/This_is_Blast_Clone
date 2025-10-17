@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c3a304220338046b101ffcef8a3a2e, type: 3}
+  m_Name: AudioDatabase
+  m_EditorClassIdentifier: 
+  audioList:
+  - id: GamePlay
+    clip: {fileID: 8300000, guid: 8ee41b59efe94a24c8c1b9731ec149a1, type: 3}
+    isLooping: 1
+  - id: MenuGame
+    clip: {fileID: 8300000, guid: 3b47a986f17ea6d4e9b45dc7fd004c6f, type: 3}
+    isLooping: 1
+  - id: PlayerClick
+    clip: {fileID: 8300000, guid: 6ea69f057a6af5941b660d3dd7c18c4e, type: 3}
+    isLooping: 0
+  - id: Attack
+    clip: {fileID: 8300000, guid: e1c233fa56624fa489a797eb47e18ba1, type: 3}
+    isLooping: 0
+  - id: CrispyHit
+    clip: {fileID: 8300000, guid: 393b5f1d3fef85446a67f2fc6cc28f32, type: 3}
+    isLooping: 0
+  - id: WinState
+    clip: {fileID: 8300000, guid: 2259c9e4e49ef274ab24b8249d151c51, type: 3}
+    isLooping: 0
+  - id: CoinCollect
+    clip: {fileID: 8300000, guid: c30f108859d40e24fb777f6cf0553295, type: 3}
+    isLooping: 0
+  - id: open
+    clip: {fileID: 8300000, guid: 3a642368ead383049b42086585d3b4d6, type: 3}
+    isLooping: 0
+  - id: MoveTarget
+    clip: {fileID: 8300000, guid: da4b017dc2b47d74ab62c87f4a9a09ca, type: 3}
+    isLooping: 0
+  - id: Close
+    clip: {fileID: 8300000, guid: 7bda0bfdef042e849b9a3b730cd42193, type: 3}
+    isLooping: 0
+  - id: CountDown
+    clip: {fileID: 8300000, guid: 10f97411bef929a4fb743277e40772d1, type: 3}
+    isLooping: 1
