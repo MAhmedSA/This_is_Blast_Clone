@@ -2,7 +2,7 @@
 
 public class PlayerTouch : MonoBehaviour
 {
-    void Update()
+    void FixedUpdate()
     {
         PlayerInput();
     }

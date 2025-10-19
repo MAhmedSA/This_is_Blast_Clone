@@ -428,6 +428,7 @@
 "Assets/Scripts/Player/PlayerTouch.cs"
 "Assets/Scripts/Player/Projectile.cs"
 "Assets/Scripts/ScriptableObject/AudioDatabase.cs"
+"Assets/Scripts/ScriptableObject/LevelData.cs"
 "Assets/Scripts/ScriptableObject/SceneDataBase.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"

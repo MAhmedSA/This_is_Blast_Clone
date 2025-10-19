@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FE284066-B2AD-4104-D984-51BA3061F60A}</ProjectGuid>
+    <ProjectGuid>{79D9B2CF-97E0-0C2E-9719-6AA0CF386216}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>ToonyColorsPro.Editor</AssemblyName>
@@ -1142,23 +1142,23 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ToonyColorsPro.Runtime.csproj">
-      <Project>{42BB2E4A-90EB-584B-ED3F-393454D3C1C8}</Project>
+      <Project>{3E636875-FF80-B808-7918-FB141C94CEB5}</Project>
       <Name>ToonyColorsPro.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{EBA10E30-7D83-FE7B-28C1-70FCF3A63497}</Project>
+      <Project>{3979ED02-45C0-E31F-4438-598A4E789D2B}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{CDFF75D7-E2BB-BF73-9779-52D4686CAA88}</Project>
+      <Project>{9AD265A6-E462-3108-6EF7-799CFC504175}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{ADEC49C9-C24A-DCD7-FD37-D8ACF5964642}</Project>
+      <Project>{66CE1567-882D-29D8-D011-79D97B8D7CF7}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{3E1FE34A-F4C9-1478-C33F-410FB5530044}</Project>
+      <Project>{D1E26534-5698-7718-57E5-DC725431B07A}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

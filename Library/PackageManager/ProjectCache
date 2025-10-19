@@ -1,7 +1,6 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: C:/Users/Mohamed/Downloads/TASK - Unity Developer - This is Blast
-      - Unity Project - This is Blast/Unity Project - This is Blast/Packages/manifest.json
+    m_FilePath: C:/Users/Mohamed/This_is_Blast_Clone/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -9,8 +8,7 @@ m_ProjectFiles:
       ticks: 638960567027330587
     m_Hash: 1653134216
   m_LockFileStatus:
-    m_FilePath: C:/Users/Mohamed/Downloads/TASK - Unity Developer - This is Blast
-      - Unity Project - This is Blast/Unity Project - This is Blast/Packages/packages-lock.json
+    m_FilePath: C:/Users/Mohamed/This_is_Blast_Clone/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
@@ -21,8 +19,7 @@ m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
-m_ProjectPath: C:/Users/Mohamed/Downloads/TASK - Unity Developer - This is Blast
-  - Unity Project - This is Blast/Unity Project - This is Blast/Packages
+m_ProjectPath: C:/Users/Mohamed/This_is_Blast_Clone/Packages
 m_EditorVersion: 6000.0.59f2 (ef281c76c3c1)
 m_ResolvedPackages:
 - packageId: com.unity.2d.sprite@1.0.0
@@ -30,8 +27,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: C:\Users\Mohamed\Downloads\TASK - Unity Developer - This is Blast
-    - Unity Project - This is Blast\Unity Project - This is Blast\Library\PackageCache\com.unity.2d.sprite@897b7eecf04e
+  resolvedPath: C:\Users\Mohamed\This_is_Blast_Clone\Library\PackageCache\com.unity.2d.sprite@897b7eecf04e
   assetPath: Packages/com.unity.2d.sprite
   name: com.unity.2d.sprite
   displayName: 2D Sprite
@@ -110,8 +106,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.25
   source: 1
-  resolvedPath: C:\Users\Mohamed\Downloads\TASK - Unity Developer - This is Blast
-    - Unity Project - This is Blast\Unity Project - This is Blast\Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb
+  resolvedPath: C:\Users\Mohamed\This_is_Blast_Clone\Library\PackageCache\com.unity.ide.visualstudio@74aa435fc4bb
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -225,8 +220,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 2.0.0
   source: 2
-  resolvedPath: C:\Users\Mohamed\Downloads\TASK - Unity Developer - This is Blast
-    - Unity Project - This is Blast\Unity Project - This is Blast\Library\PackageCache\com.unity.ugui@23b1a4ff749d
+  resolvedPath: C:\Users\Mohamed\This_is_Blast_Clone\Library\PackageCache\com.unity.ugui@23b1a4ff749d
   assetPath: Packages/com.unity.ugui
   name: com.unity.ugui
   displayName: Unity UI
@@ -3048,8 +3042,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.6.0
   source: 2
-  resolvedPath: C:\Users\Mohamed\Downloads\TASK - Unity Developer - This is Blast
-    - Unity Project - This is Blast\Unity Project - This is Blast\Library\PackageCache\com.unity.test-framework@0baaad2f700c
+  resolvedPath: C:\Users\Mohamed\This_is_Blast_Clone\Library\PackageCache\com.unity.test-framework@0baaad2f700c
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -3138,8 +3131,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.0.5
   source: 2
-  resolvedPath: C:\Users\Mohamed\Downloads\TASK - Unity Developer - This is Blast
-    - Unity Project - This is Blast\Unity Project - This is Blast\Library\PackageCache\com.unity.ext.nunit@031a54704bff
+  resolvedPath: C:\Users\Mohamed\This_is_Blast_Clone\Library\PackageCache\com.unity.ext.nunit@031a54704bff
   assetPath: Packages/com.unity.ext.nunit
   name: com.unity.ext.nunit
   displayName: Custom NUnit

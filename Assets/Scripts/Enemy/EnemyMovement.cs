@@ -1,14 +1,38 @@
-﻿using UnityEngine;
+﻿using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
     private int row, column;
+    public int Row => row;            // <-- expose row to other scripts
+    public int Column => column;
+
     private bool isMoving = false;
     private bool hasReachedStart = false;
     private Vector3 startTargetPos;
-
+    public string colorEnemy;
+    List<Transform> currentListToCheck=new List<Transform>();
+    
+    private void Start()
+    {
+        if (gameObject.GetComponent<MeshRenderer>().material.name.Contains("Red_Mat")) {
+            colorEnemy = "red";
+            currentListToCheck = GameManager.Instance.redEnemies;
+        }
+        if (gameObject.GetComponent<MeshRenderer>().material.name.Contains("Blue_Mat"))
+        {
+            colorEnemy = "blue";
+            currentListToCheck = GameManager.Instance.blueEnemies;
+        }
+        if (gameObject.GetComponent<MeshRenderer>().material.name.Contains("Green_Mat"))
+        {
+            currentListToCheck = GameManager.Instance.greenEnemies;
+            colorEnemy = "green";
+        }
+    }
     public void InitializeEnemy(int r, int c, Vector3 startPos)
     {
         row = r;
@@ -76,7 +100,17 @@ public class EnemyMovement : MonoBehaviour
         if (row == 0)
         {
             Debug.Log($"{name} reached first line → Checking player attack.");
-           
+            for (int i = 0; i < PlayerManager.Instance.touchedPlayers.Count; i++) {
+                List<Transform> currentEnemiesColor=   GameManager.Instance.GetFirstRowEnemiesByColor(PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().playerColor);
+                PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().EnableAttack(currentEnemiesColor);
+
+                if (PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().playerColor == colorEnemy) {
+                    
+                    Debug.Log($"{name} matched with {PlayerManager.Instance.touchedPlayers[i].name} color attack.");
+
+                }
+            
+            }
         }
     }
 }

@@ -37,14 +37,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 isMoving = false;
                 hasArrived = true; //  lock movement after arrival
-
+                PlayerManager.Instance.touchedPlayers.Add(this.gameObject); // to control in other thing
                 // When arrived, enable attack for this player
                 if (playerAttack != null)
                 {
                     Transform enemy = GameManager.Instance.GetFrontlineEnemy(playerAttack.playerColor);
                     if (enemy != null)
                     {
-                        playerAttack.EnableAttack(enemy, transform.position);
+                        playerAttack.EnableAttack(GameManager.Instance.GetFirstRowEnemiesByColor(playerAttack.playerColor));
                     }
                 }
             }

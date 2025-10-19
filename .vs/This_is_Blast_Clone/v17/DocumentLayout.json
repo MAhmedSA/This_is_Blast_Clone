@@ -1,0 +1,219 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\manager\\gamemanager\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\manager\\gamemanager\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|c:\\users\\mohamed\\this_is_blast_clone\\assets\\scripts\\scriptableobject\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scriptableobject\\leveldata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\enemy\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playerattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\playertouch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playertouch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|c:\\users\\mohamed\\this_is_blast_clone\\assets\\scripts\\scriptableobject\\scenedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scriptableobject\\scenedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\scriptableobject\\audiodatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\scriptableobject\\audiodatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\enemy\\enemydie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemy\\enemydie.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\objectpool.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|C:\\Users\\Mohamed\\This_is_Blast_Clone\\assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60529011-036F-7410-5C84-4ABBDD0052B0}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LevelData.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\LevelData.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScriptableObject\\LevelData.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\LevelData.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScriptableObject\\LevelData.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAwBoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T20:00:16.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SceneDataBase.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\SceneDataBase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScriptableObject\\SceneDataBase.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\SceneDataBase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScriptableObject\\SceneDataBase.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T16:09:25.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AudioDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\AudioDatabase.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ScriptableObject\\AudioDatabase.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\ScriptableObject\\AudioDatabase.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ScriptableObject\\AudioDatabase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T16:09:16.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Projectile.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\Projectile.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Projectile.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\Projectile.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Projectile.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAADwvzAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T09:52:27.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ObjectPool.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\ObjectPool.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\ObjectPool.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\ObjectPool.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\ObjectPool.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAwwCoAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-19T09:49:32.254Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Manager\\GameManager\\GameManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Manager\\GameManager\\GameManager.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Manager\\GameManager\\GameManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Manager\\GameManager\\GameManager.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAwwEIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T19:39:20.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PlayerManager.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerManager.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerManager.cs",
+              "ViewState": "AgIAANsAAAAAAAAAAAAmwOkAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T12:44:35.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PlayerTouch.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerTouch.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerTouch.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerTouch.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerTouch.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T12:43:54.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PlayerAttack.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerAttack.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAuwGIAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T12:41:35.626Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnemyMovement.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\EnemyMovement.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAADwv2cAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T12:40:39.72Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "PlayerMovement.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerMovement.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAADwvywAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T20:01:42.99Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "EnemyDie.cs",
+              "DocumentMoniker": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Enemy\\EnemyDie.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Enemy\\EnemyDie.cs",
+              "ToolTip": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Assets\\Scripts\\Enemy\\EnemyDie.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Enemy\\EnemyDie.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwA0AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-18T12:40:28.028Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

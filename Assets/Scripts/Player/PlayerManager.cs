@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
     [Header("Spawn Setup")]
     public GameObject playerPrefab;
+    public List<GameObject> touchedPlayers;
     public Transform[] spawnPositions;
     public Material[] playerMaterials;
     public int numberOfPlayers = 5;
@@ -51,18 +53,26 @@ public class PlayerManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfPlayers; i++)
         {
-            Transform spawnPoint = spawnPositions[UnityEngine.Random.Range(0, spawnPositions.Length)];
+            Transform spawnPoint = spawnPositions[i];
             GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
 
             if (newPlayer.GetComponent<PlayerAttack>() == null)
                 newPlayer.AddComponent<PlayerAttack>();
 
-
+           
 
             if (playerMaterials.Length > 0)
             {
-                Material randomMat = playerMaterials[UnityEngine.Random.Range(0, playerMaterials.Length)];
+                string colorName;
+                colorName = "";
+                Material randomMat = playerMaterials[i];
                 Renderer rend = newPlayer.GetComponent<Renderer>();
+                if (randomMat.name == "Red_Mat")
+                    colorName = "red";
+                if (randomMat.name == "Blue_Mat")
+                    colorName = "blue";
+                if (randomMat.name == "Green_Mat")
+                    colorName = "green";
                 // Material mat = playerMaterials[i % playerMaterials.Length];
                 if (rend != null)
                 {
@@ -71,7 +81,7 @@ public class PlayerManager : MonoBehaviour
 
                 // Set layer based on color name
                 SetLayerByMaterial(newPlayer, randomMat);
-                string colorName = randomMat.name.Replace(" (Instance)", "");
+              
                 newPlayer.GetComponent<PlayerAttack>().playerColor = colorName;
             }
 
@@ -171,5 +181,61 @@ public class PlayerManager : MonoBehaviour
         if (colorAttackLock.ContainsKey(key))
             colorAttackLock[key] = false;
     }
+
+    public void StartAllPlayerAttacks()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        // Group players by color
+        Dictionary<string, List<PlayerAttack>> playersByColor = new Dictionary<string, List<PlayerAttack>>();
+        foreach (var playerObj in players)
+        {
+            var atk = playerObj.GetComponent<PlayerAttack>();
+            if (atk == null) continue;
+
+            string color = atk.playerColor.ToLower();
+            if (!playersByColor.ContainsKey(color))
+                playersByColor[color] = new List<PlayerAttack>();
+
+            playersByColor[color].Add(atk);
+        }
+
+        // For each color group, assign unique enemies based on attack count
+        foreach (var kvp in playersByColor)
+        {
+            string color = kvp.Key;
+            List<PlayerAttack> colorPlayers = kvp.Value;
+            List<Transform> colorEnemies = GameManager.Instance.GetFirstRowEnemiesByColor(color);
+
+            if (colorEnemies == null || colorEnemies.Count == 0)
+            {
+                Debug.LogWarning($"[PlayerManager] No enemies found for color {color}");
+                continue;
+            }
+
+            int totalEnemies = colorEnemies.Count;
+            int totalAttackSlots = colorPlayers.Sum(p => p.attackCount);
+            int enemyIndex = 0;
+
+            // Assign targets sequentially based on attack count
+            foreach (var player in colorPlayers)
+            {
+                List<Transform> assigned = new List<Transform>();
+
+                for (int i = 0; i < player.attackCount && enemyIndex < totalEnemies; i++)
+                {
+                    assigned.Add(colorEnemies[enemyIndex]);
+                    enemyIndex++;
+                }
+
+                //if (assigned.Count > 0)
+                //   // player.EnableAttack(assigned);
+                //else
+                //    Debug.Log($"[PlayerManager] {player.name} has no targets for {color}");
+            }
+        }
+    }
+
+
 
 }

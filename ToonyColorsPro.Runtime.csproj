@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{42BB2E4A-90EB-584B-ED3F-393454D3C1C8}</ProjectGuid>
+    <ProjectGuid>{3E636875-FF80-B808-7918-FB141C94CEB5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>ToonyColorsPro.Runtime</AssemblyName>
@@ -1089,11 +1089,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{EBA10E30-7D83-FE7B-28C1-70FCF3A63497}</Project>
+      <Project>{3979ED02-45C0-E31F-4438-598A4E789D2B}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{CDFF75D7-E2BB-BF73-9779-52D4686CAA88}</Project>
+      <Project>{9AD265A6-E462-3108-6EF7-799CFC504175}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>

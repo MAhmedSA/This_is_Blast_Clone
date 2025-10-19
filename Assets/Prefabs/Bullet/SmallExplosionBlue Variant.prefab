@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4567180410600994851}
   m_Layer: 0
   m_Name: BulletBody
-  m_TagString: Untagged
+  m_TagString: BulletBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -220,7 +220,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 401496, guid: 56e3e0c71ef4cbe4dbda074c547d7bd4, type: 3}
-      insertIndex: -1
+      insertIndex: 0
       addedObject: {fileID: 4135951209366935877}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 140474, guid: 56e3e0c71ef4cbe4dbda074c547d7bd4, type: 3}
@@ -255,6 +255,7 @@ MonoBehaviour:
   speed: 6
   hitParticles: {fileID: 2813618461742299540}
   lifetime: 7
+  bulletBody: {fileID: 918872336143127571}
 --- !u!135 &200903544862335210
 SphereCollider:
   m_ObjectHideFlags: 0

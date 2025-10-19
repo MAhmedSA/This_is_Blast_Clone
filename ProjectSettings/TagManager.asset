@@ -19,6 +19,8 @@ TagManager:
   - Missile
   - LevelText
   - Bullet
+  - AttackNumber
+  - BulletBody
   layers:
   - Default
   - TransparentFX

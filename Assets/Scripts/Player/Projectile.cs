@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Projectile : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Projectile : MonoBehaviour
     private Transform target;
     private float lifeTimer;
     private bool hasHit = false;
+    [SerializeField] GameObject bulletBody;
 
     private void OnEnable()
     {
@@ -21,7 +23,7 @@ public class Projectile : MonoBehaviour
     public void SetTarget(Transform enemy)
     {
         target = enemy;
-        gameObject.SetActive(true);
+        bulletBody.SetActive(true);
     }
 
     private void Update()
@@ -48,7 +50,7 @@ public class Projectile : MonoBehaviour
             hasHit = true;
             PlayHitEffect();
             onHit?.Invoke(); // Notify PlayerAttack or manager
-            EnemyDie.Instance.Die(target.gameObject); // Call enemy die method
+            target.gameObject.GetComponent<EnemyDie>().Die();
             Deactivate();
         }
     }
@@ -56,11 +58,8 @@ public class Projectile : MonoBehaviour
     private void PlayHitEffect()
     {
         if (hitParticles != null)
-        {
-            // Detach from projectile so effect stays after projectile disappears
-            hitParticles.transform.parent = null;
-            hitParticles.Play();
-            Destroy(hitParticles.gameObject, hitParticles.main.duration);
+        {  
+            hitParticles.Play(); 
         }
     }
 
@@ -68,6 +67,6 @@ public class Projectile : MonoBehaviour
     {
         target = null;
         hasHit = false;
-        gameObject.SetActive(false); // return to pool
+        bulletBody.SetActive(false); // return to pool
     }
 }

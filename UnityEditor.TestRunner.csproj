@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{ADEC49C9-C24A-DCD7-FD37-D8ACF5964642}</ProjectGuid>
+    <ProjectGuid>{66CE1567-882D-29D8-D011-79D97B8D7CF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>UnityEditor.TestRunner</AssemblyName>
@@ -1331,7 +1331,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{3E1FE34A-F4C9-1478-C33F-410FB5530044}</Project>
+      <Project>{D1E26534-5698-7718-57E5-DC725431B07A}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>

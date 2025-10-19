@@ -1,18 +1,18 @@
 {
   "context": {
-    "projectPath": "C:/Users/Mohamed/Downloads/TASK - Unity Developer - This is Blast - Unity Project - This is Blast/Unity Project - This is Blast/Packages",
+    "projectPath": "C:/Users/Mohamed/This_is_Blast_Clone/Packages",
     "unityVersion": "6000.0.59f2"
   },
   "inputs": [
-    "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Packages\\manifest.json",
-    "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Packages\\packages-lock.json",
+    "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Packages\\manifest.json",
+    "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Packages\\packages-lock.json",
     "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.59f2\\Editor\\Data\\Resources\\PackageManager\\BuiltInPackages\\BuiltInPackagesCombined.sha1"
   ],
   "outputs": {
     "com.unity.2d.sprite@1.0.0": {
       "name": "com.unity.2d.sprite",
       "displayName": "2D Sprite",
-      "resolvedPath": "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Library\\PackageCache\\com.unity.2d.sprite@897b7eecf04e",
+      "resolvedPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Library\\PackageCache\\com.unity.2d.sprite@897b7eecf04e",
       "fingerprint": "897b7eecf04ec94126f19c6ce2cba3404cc15178",
       "editorCompatibility": "2019.2.0a1",
       "version": "1.0.0",
@@ -22,7 +22,7 @@
     "com.unity.ide.visualstudio@2.0.25": {
       "name": "com.unity.ide.visualstudio",
       "displayName": "Visual Studio Editor",
-      "resolvedPath": "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Library\\PackageCache\\com.unity.ide.visualstudio@74aa435fc4bb",
+      "resolvedPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Library\\PackageCache\\com.unity.ide.visualstudio@74aa435fc4bb",
       "fingerprint": "74aa435fc4bb41890f400130ec80f271d1292fd4",
       "editorCompatibility": "2021.3.0a1",
       "version": "2.0.25",
@@ -32,7 +32,7 @@
     "com.unity.ugui@2.0.0": {
       "name": "com.unity.ugui",
       "displayName": "Unity UI",
-      "resolvedPath": "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Library\\PackageCache\\com.unity.ugui@23b1a4ff749d",
+      "resolvedPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Library\\PackageCache\\com.unity.ugui@23b1a4ff749d",
       "fingerprint": "23b1a4ff749d69614ac83bcec9b1eb5d286cc9f0",
       "editorCompatibility": "2019.2.0a1",
       "version": "2.0.0",
@@ -314,7 +314,7 @@
     "com.unity.test-framework@1.6.0": {
       "name": "com.unity.test-framework",
       "displayName": "Test Framework",
-      "resolvedPath": "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Library\\PackageCache\\com.unity.test-framework@0baaad2f700c",
+      "resolvedPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Library\\PackageCache\\com.unity.test-framework@0baaad2f700c",
       "fingerprint": "0baaad2f700c671c6932db856fb80e6fa04b1bde",
       "editorCompatibility": "6000.0.44f1",
       "version": "1.6.0",
@@ -324,7 +324,7 @@
     "com.unity.ext.nunit@2.0.5": {
       "name": "com.unity.ext.nunit",
       "displayName": "Custom NUnit",
-      "resolvedPath": "C:\\Users\\Mohamed\\Downloads\\TASK - Unity Developer - This is Blast - Unity Project - This is Blast\\Unity Project - This is Blast\\Library\\PackageCache\\com.unity.ext.nunit@031a54704bff",
+      "resolvedPath": "C:\\Users\\Mohamed\\This_is_Blast_Clone\\Library\\PackageCache\\com.unity.ext.nunit@031a54704bff",
       "fingerprint": "031a54704bffe39e6a0324909f8eaa4565bdebf2",
       "editorCompatibility": "2019.4.0a1",
       "version": "2.0.5",

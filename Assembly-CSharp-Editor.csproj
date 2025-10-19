@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{866E2268-65EF-BA83-A049-E78BE231EBF4}</ProjectGuid>
+    <ProjectGuid>{08F43E92-8DF7-1D89-B79E-BAB2932020E6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -1105,51 +1105,51 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{931B3F8E-9ADF-5EB1-7599-5DF2D42023F6}</Project>
+      <Project>{37F6BD8F-4474-E2B2-5E3D-A2BBEB1CCD2F}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{32E20154-3B30-EC22-4323-0ACD0DF27A5F}</Project>
+      <Project>{60529011-036F-7410-5C84-4ABBDD0052B0}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
-      <Project>{ADEC49C9-C24A-DCD7-FD37-D8ACF5964642}</Project>
+      <Project>{66CE1567-882D-29D8-D011-79D97B8D7CF7}</Project>
       <Name>UnityEditor.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{3E1FE34A-F4C9-1478-C33F-410FB5530044}</Project>
+      <Project>{D1E26534-5698-7718-57E5-DC725431B07A}</Project>
       <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
     <ProjectReference Include="ToonyColorsPro.Editor.csproj">
-      <Project>{FE284066-B2AD-4104-D984-51BA3061F60A}</Project>
+      <Project>{79D9B2CF-97E0-0C2E-9719-6AA0CF386216}</Project>
       <Name>ToonyColorsPro.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{EBA10E30-7D83-FE7B-28C1-70FCF3A63497}</Project>
+      <Project>{3979ED02-45C0-E31F-4438-598A4E789D2B}</Project>
       <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.2D.Sprite.Editor.csproj">
-      <Project>{D76D8D96-5858-7111-587E-1CCAEB9C4FC8}</Project>
+      <Project>{0533FF3A-924E-A1D8-9BF6-5CB2B826DE2F}</Project>
       <Name>Unity.2D.Sprite.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="ToonyColorsPro.Runtime.csproj">
-      <Project>{42BB2E4A-90EB-584B-ED3F-393454D3C1C8}</Project>
+      <Project>{3E636875-FF80-B808-7918-FB141C94CEB5}</Project>
       <Name>ToonyColorsPro.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Editor.csproj">
-      <Project>{B3A630B9-CE01-D13E-9397-A72DDD541198}</Project>
+      <Project>{932952C0-1D1B-BDC4-6E13-19FC06B8B67B}</Project>
       <Name>Unity.TextMeshPro.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
-      <Project>{5F69FA9D-901B-5BE7-57E6-21AE51C32035}</Project>
+      <Project>{32529163-5AF5-5F52-C621-A9C9C3CC6C7B}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.csproj">
-      <Project>{3458DD25-E0E8-E12F-E7CE-5D9AB879C286}</Project>
+      <Project>{282F8D5F-D636-8F80-77AF-0FF1493DFC54}</Project>
       <Name>Unity.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
-      <Project>{CDFF75D7-E2BB-BF73-9779-52D4686CAA88}</Project>
+      <Project>{9AD265A6-E462-3108-6EF7-799CFC504175}</Project>
       <Name>UnityEngine.UI</Name>
     </ProjectReference>
   </ItemGroup>

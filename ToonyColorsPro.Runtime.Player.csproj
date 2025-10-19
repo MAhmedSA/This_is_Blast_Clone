@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{2A344BB3-8C23-04C9-A9C1-0D39032AEE2B}</ProjectGuid>
+    <ProjectGuid>{13524E9E-676F-4BDB-0F7F-ABA4B75A426A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>ToonyColorsPro.Runtime</AssemblyName>
@@ -861,7 +861,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{6FF3DAE2-CF12-A2A4-9A94-BA07DA65E290}</Project>
+      <Project>{63E4F8DC-411E-7914-F764-8B8672AF5634}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>

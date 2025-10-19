@@ -10,7 +10,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{65216B34-4C53-59BF-7B77-C1EF32388053}</ProjectGuid>
+    <ProjectGuid>{8884E98D-ED08-6A0C-38B8-A31676D019E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -863,15 +863,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="ToonyColorsPro.Runtime.Player.csproj">
-      <Project>{2A344BB3-8C23-04C9-A9C1-0D39032AEE2B}</Project>
+      <Project>{13524E9E-676F-4BDB-0F7F-ABA4B75A426A}</Project>
       <Name>ToonyColorsPro.Runtime.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.TextMeshPro.Player.csproj">
-      <Project>{B5F0246C-85A7-94A3-0CFE-E5B2DBDD313B}</Project>
+      <Project>{CA6E75D5-2417-C09D-74F6-BF6A45187064}</Project>
       <Name>Unity.TextMeshPro.Player</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.Player.csproj">
-      <Project>{6FF3DAE2-CF12-A2A4-9A94-BA07DA65E290}</Project>
+      <Project>{63E4F8DC-411E-7914-F764-8B8672AF5634}</Project>
       <Name>UnityEngine.UI.Player</Name>
     </ProjectReference>
   </ItemGroup>

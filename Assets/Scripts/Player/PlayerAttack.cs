@@ -1,65 +1,150 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
+using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     public string projectileTag = "Bullet";
     public float moveSpeed = 5f;
-    public float attackCooldown = 1f; // time between bullets
+    public float attackCooldown = 2f;
     public string playerColor;
+    public int attackCount =2; // Number shown on player
 
-    private Transform targetEnemy;
-    private Vector3 targetPosition;
+    private List<Transform> targetEnemies = new List<Transform>();
+    private int currentTargetIndex = 0;
     private bool isAttacking = false;
     private bool canShoot = true;
+    private TextMeshProUGUI attackText;
+    public List<Transform> allowedEnemies = new List<Transform>();
+    private void Awake()
+    {
+        // Find the Text component inside the prefab
+        attackText = GetComponentInChildren<TextMeshProUGUI>();
 
+        // Update text when starting (if already assigned)
+        UpdateAttackText();
+    }
+   
+
+    //public void AssignEnemies(List<Transform> enemies)
+    //{
+    //    allowedEnemies = enemies;
+    //}
+
+    //public bool CanAttack(Transform enemy)
+    //{
+    //    // Only attack if enemy is in allowed list and still alive
+    //    return allowedEnemies.Contains(enemy);
+    //}
     private void Update()
     {
-        if (targetEnemy == null || !isAttacking) return;
+        if (!isAttacking || targetEnemies.Count == 0) return;
 
-        // 1️⃣ Move toward target position first
-        if (Vector3.Distance(transform.position, targetPosition) > 0.1f)
+        if (currentTargetIndex >= targetEnemies.Count)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-            transform.LookAt(targetPosition);
-            return; // wait until arrived
+            FinishAttacking();
+            return;
         }
 
-        // 2️⃣ Attack logic after reaching position
+        Transform currentTarget=null;
+        if (targetEnemies[currentTargetIndex] != null) {
+            currentTarget = targetEnemies[currentTargetIndex];
+        }
+
+        if (currentTarget == null)
+        {
+            Debug.Log($"[PlayerAttack] target at index {currentTargetIndex} is null, skipping.");
+            currentTargetIndex++;
+            return;
+        }
+
+       
+        // Attack without moving
         if (canShoot)
         {
-            ShootProjectile();
+            // Rotate player in Z axis only (for 2.5D setup)
+            Vector3 targetPos = currentTarget.position;
+            Vector3 direction = targetPos - transform.position;
+            direction.y = 0f; // ignore vertical rotation
+
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+            // Convert it to Z-axis rotation
+            Quaternion targetRotation = Quaternion.Euler(0f, 0f, lookRotation.eulerAngles.y);
+
+            // Smoothly rotate using Slerp
+            float rotationSpeed = 5f; // adjust for smoothness
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            
+            ShootProjectile(currentTarget);
             canShoot = false;
             StartCoroutine(AttackWaitCoroutine());
+            
         }
     }
 
-    public void EnableAttack(Transform enemy, Vector3 position)
+    public void SetAttackCount(int value)
     {
-        if (string.IsNullOrEmpty(playerColor) || !PlayerManager.Instance.CanColorAttack(playerColor))
-            return;
-
-        targetEnemy = enemy;
-        targetPosition = position;
-        isAttacking = true;
-
-        // Lock color so other players of same color wait
-        PlayerManager.Instance.LockColorAttack(playerColor);
+        this.attackCount = value;
+        UpdateAttackText();
     }
 
-    private void ShootProjectile()
+    private void UpdateAttackText()
+    {
+        if (attackText != null)
+            attackText.text = attackCount.ToString();
+    }
+    public void EnableAttack(List<Transform> enemies)
+    {
+        if (enemies == null || enemies.Count == 0)
+        {
+            Debug.Log($"[PlayerAttack] EnableAttack called but no enemies for color {playerColor}");
+            return;
+        }
+
+        // respect attackCount (limit how many targets we will try)
+        int count = Mathf.Min(attackCount, enemies.Count);
+        targetEnemies = enemies.GetRange(0, count);
+        currentTargetIndex = 0;
+        isAttacking = true;
+        //canShoot = true;
+        Debug.Log($"[PlayerAttack] {name} started attacking {targetEnemies.Count} enemies of color {playerColor}");
+    }
+    public void SetAttack() {
+        
+        isAttacking = true;
+    }
+    private void ShootProjectile(Transform target)
     {
         GameObject proj = ObjectPool.Instance.SpawnFromPool(projectileTag, transform.position, Quaternion.identity);
-        if (proj != null && targetEnemy != null)
+        if (proj == null)
         {
-            proj.SetActive(true);
-            Projectile p = proj.GetComponent<Projectile>();
-            if (p != null)
-                p.SetTarget(targetEnemy);
-            AudioManager.Instance.PlaySound("Attack");
-            // Callback when projectile hits
-            p.onHit = OnProjectileHit;
+            Debug.LogWarning("[PlayerAttack] Projectile pool returned null.");
+            return;
         }
+
+        proj.SetActive(true);
+        Projectile p = proj.GetComponent<Projectile>();
+        if (p == null)
+        {
+            Debug.LogWarning("[PlayerAttack] Spawned projectile missing Projectile component.");
+            return;
+        }
+
+        p.SetTarget(target);
+
+        // wire up callback safely
+        p.onHit = () =>
+        {
+            OnProjectileHit(target);
+        };
+
+        // play sound if you have AudioManager (safe-guard)
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlaySound("Attack");
+       
     }
 
     private IEnumerator AttackWaitCoroutine()
@@ -68,10 +153,35 @@ public class PlayerAttack : MonoBehaviour
         canShoot = true;
     }
 
-    private void OnProjectileHit()
+    // Now pass the target that was hit — helps us verify same target
+    private void OnProjectileHit(Transform hitTarget)
     {
-        // Reset attacking state and unlock color
+        attackCount = Mathf.Max(0, attackCount - 1);
+        UpdateAttackText();
+        // if hitTarget equals current target, advance
+        if (currentTargetIndex < targetEnemies.Count && targetEnemies[currentTargetIndex] == hitTarget)
+        {
+            currentTargetIndex++;
+        }
+        else
+        {
+            // If not, find and remove it if present
+            int found = targetEnemies.IndexOf(hitTarget);
+            if (found >= 0) targetEnemies.RemoveAt(found);
+        }
+
+        // If we've exhausted targets, finish
+        if (currentTargetIndex >= targetEnemies.Count)
+        {
+            FinishAttacking();
+        }
+    }
+
+    private void FinishAttacking()
+    {
         isAttacking = false;
-        PlayerManager.Instance.UnlockColorAttack(playerColor);
+        Debug.Log($"[PlayerAttack] {name} finished attacking color {playerColor}");
+        if (PlayerManager.Instance != null)
+            PlayerManager.Instance.UnlockColorAttack(playerColor);
     }
 }
