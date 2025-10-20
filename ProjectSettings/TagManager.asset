@@ -21,6 +21,7 @@ TagManager:
   - Bullet
   - AttackNumber
   - BulletBody
+  - OutSidePos
   layers:
   - Default
   - TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - YellowPlayers
   - Enemy
   - RedPlayers
   - BluePlayers
@@ -36,7 +37,7 @@ TagManager:
   - Red_Enemy
   - Blue_Enemy
   - Green_Enemy
-  - GameNPC4
+  - Yellow_Enemy
   - GameNPC5
   - Enemy1
   - Enemy2

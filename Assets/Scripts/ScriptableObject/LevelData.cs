@@ -26,8 +26,9 @@ public class LevelData : ScriptableObject
         [Tooltip("Number of players in this level")]
         public int playerCount;
         
-        [Tooltip("Number of Enemies in this level ")]
-        public int enemiesCount;
+        [Tooltip("Number of rows & columns for enemies in this level ")]
+        public int rows;
+        public int columns;
         
         [Tooltip("Layout Of Level is random or not to arrange enemies")]
         public bool isRandomized;

@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private bool hasArrived = false; //  new flag to prevent re-clicking
     public bool HasArrived => hasArrived; // public to read only in input to know he is arrived or no 
 
-
+    public Transform currentSlot;
     private PlayerAttack playerAttack;
 
     private void Awake()
@@ -18,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
             playerAttack = gameObject.AddComponent<PlayerAttack>();
     }
 
-    public void MoveTo(Vector3 position)
+    public void MoveTo(Vector3 position,Transform slot = null)
     {
         //  Prevent moving again if already arrived
         if (hasArrived) return;
-
+        currentSlot = slot;
         targetPosition = position;
         isMoving = true;
     }

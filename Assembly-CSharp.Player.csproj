@@ -105,6 +105,7 @@
     <Compile Include="Assets\Scripts\Player\Projectile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Packages\HighlightPlus\Scripts\ShaderParams.cs" />
+    <Compile Include="Assets\Scripts\Manager\TutoriallManager\TutorialManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\Packages\HighlightPlus\Scripts\InputProxy.cs" />
     <Compile Include="Assets\Scripts\Manager\LoadManager\LoadingManager.cs" />

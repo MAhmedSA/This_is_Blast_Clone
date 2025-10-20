@@ -22,7 +22,8 @@ public class PlayerManager : MonoBehaviour
 {
     { "red", false },
     { "blue", false },
-    { "green", false }
+    { "green", false },
+    { "yellow", false }
 };
 
     public static PlayerManager Instance;
@@ -39,7 +40,7 @@ public class PlayerManager : MonoBehaviour
             locationOccupied[loc] = false;
         }
 
-        foreach (var mat in playerMaterials) {
+        foreach (var mat in GameManager.Instance.CurrentLevelData.colors) {
             string colorName = mat.name.Replace(" (Instance)", "");
             if (!colorAttackLock.ContainsKey(colorName))
                 colorAttackLock[colorName] = false;
@@ -47,11 +48,28 @@ public class PlayerManager : MonoBehaviour
 
         SpawnPlayers();
     }
+    public void ClearAllPlayers() {
+        touchedPlayers.Clear();
+        touchedPlayers= new List<GameObject>();
 
+    }
+    public void CreateNewPlayers() {
+        foreach (var loc in moveLocations)
+        {
+            locationOccupied[loc] = false;
+        }
 
+        foreach (var mat in GameManager.Instance.CurrentLevelData.colors)
+        {
+            string colorName = mat.name.Replace(" (Instance)", "");
+            if (!colorAttackLock.ContainsKey(colorName))
+                colorAttackLock[colorName] = false;
+        }
+        SpawnPlayers(); 
+    }
     void SpawnPlayers()
     {
-        for (int i = 0; i < numberOfPlayers; i++)
+        for (int i = 0; i < GameManager.Instance.CurrentLevelData.playerCount; i++)
         {
             Transform spawnPoint = spawnPositions[i];
             GameObject newPlayer = Instantiate(playerPrefab, spawnPoint.position, Quaternion.identity);
@@ -61,11 +79,12 @@ public class PlayerManager : MonoBehaviour
 
            
 
-            if (playerMaterials.Length > 0)
+            if (GameManager.Instance.CurrentLevelData.colors.Length > 0)
             {
                 string colorName;
                 colorName = "";
-                Material randomMat = playerMaterials[i];
+                Material randomMat = GameManager.Instance.CurrentLevelData.colors[i % GameManager.Instance.CurrentLevelData.colors.Length];
+
                 Renderer rend = newPlayer.GetComponent<Renderer>();
                 if (randomMat.name == "Red_Mat")
                     colorName = "red";
@@ -73,7 +92,9 @@ public class PlayerManager : MonoBehaviour
                     colorName = "blue";
                 if (randomMat.name == "Green_Mat")
                     colorName = "green";
-                // Material mat = playerMaterials[i % playerMaterials.Length];
+                if (randomMat.name == "Yellow_Mat")
+                    colorName = "yellow";
+               
                 if (rend != null)
                 {
                     rend.material = randomMat;
@@ -90,6 +111,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    
     void SetLayerByMaterial(GameObject player, Material mat)
     {
         string matName = mat.name.ToLower();
@@ -105,6 +127,10 @@ public class PlayerManager : MonoBehaviour
         else if (matName.Contains("green"))
         {
             player.layer = LayerMask.NameToLayer("GreenPlayers");
+        }
+        else if (matName.Contains("yellow"))
+        {
+            player.layer = LayerMask.NameToLayer("YellowPlayers");
         }
         else
         {
@@ -161,7 +187,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (!colorAttackLock.ContainsKey(colorName))
         {
-            Debug.LogWarning($"[PlayerManager] Color '{colorName}' not found in colorLock — adding it now.");
+          
             colorAttackLock[colorName] = false;
         }
         return !colorAttackLock[colorName];
@@ -209,7 +235,7 @@ public class PlayerManager : MonoBehaviour
 
             if (colorEnemies == null || colorEnemies.Count == 0)
             {
-                Debug.LogWarning($"[PlayerManager] No enemies found for color {color}");
+                
                 continue;
             }
 
@@ -228,10 +254,7 @@ public class PlayerManager : MonoBehaviour
                     enemyIndex++;
                 }
 
-                //if (assigned.Count > 0)
-                //   // player.EnableAttack(assigned);
-                //else
-                //    Debug.Log($"[PlayerManager] {player.name} has no targets for {color}");
+               
             }
         }
     }

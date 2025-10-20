@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Collections;
+using System.Linq.Expressions;
+using System.ComponentModel;
 
 
 public class GameManager : MonoBehaviour
@@ -9,15 +11,33 @@ public class GameManager : MonoBehaviour
     [Header("Enemy Setup")]
     public GameObject enemyPrefab;
     public Material[] enemyMaterials;
-    public int numberOfEnemies = 20;
+    public int numberOfEnemies ;
     [Header("Level Data")]
-    public List<LevelData>  levelData;
+    public LevelData  levelData;
+    private LevelData.LevelEntry  _currentLevelData;
+    public LevelData.LevelEntry CurrentLevelData { get { return _currentLevelData; } }
     public int currentLevelIndex ;
+
     [Header("Grid Settings")]
     public Vector3 startPosition = new Vector3(-5, 0, -7.59f);
     public int rows = 3;
     public int columns = 4;
     public float spawnOffsetY = 3f;
+
+    [Header("Level Progression")]
+    [SerializeField][Range(0, 1)] float levelPrecentage;
+
+    [SerializeField] int numberOfEnemiesDefeated=0;
+    public int NumberOfEnemiesDefeated
+    {
+        get { return numberOfEnemiesDefeated; }
+        set
+        {
+            numberOfEnemiesDefeated = value;
+            levelPrecentage = (float)numberOfEnemiesDefeated / numberOfEnemies;
+             UIManager.Instance.UpdateProgressionBar(levelPrecentage);
+        }
+    }
 
     public Transform minmumYPos;
 
@@ -27,14 +47,63 @@ public class GameManager : MonoBehaviour
     public List<Transform> redEnemies = new List<Transform>();
     public List<Transform> blueEnemies = new List<Transform>();
     public List<Transform> greenEnemies = new List<Transform>();
+    public List<Transform> yellowEnemies = new List<Transform>();
 
     public static GameManager Instance;
-
+    Coroutine IntilizeCorotine;
     void Awake()
     {
-        currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 0);
+        currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex",1);
+        _currentLevelData = levelData.levelEntries[currentLevelIndex-1];
+        
         Instance = this;
+
+        if (_currentLevelData.isRandomized)
+        {
+            rows = _currentLevelData.rows;
+            columns = _currentLevelData.columns;
+        }
+        else {
+            rows = _currentLevelData.levelLayout.Count;
+            columns = _currentLevelData.levelLayout[0].rowList.Count;
+
+        }
+        numberOfEnemies = rows * columns;
+
         enemyGrid = new EnemyMovement[rows, columns];
+    }
+    IEnumerator InitializeLevel() {
+        NumberOfEnemiesDefeated = 0;
+        levelPrecentage = 0;
+        PlayerManager.Instance.ClearAllPlayers();
+        currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 1);
+        _currentLevelData = levelData.levelEntries[currentLevelIndex-1];
+
+        Instance = this;
+
+        if (_currentLevelData.isRandomized)
+        {
+            rows = _currentLevelData.rows;
+            columns = _currentLevelData.columns;
+        }
+        else
+        {
+            rows = _currentLevelData.levelLayout.Count;
+            columns = _currentLevelData.levelLayout[0].rowList.Count;
+
+        }
+        numberOfEnemies = rows * columns;
+
+        enemyGrid = new EnemyMovement[rows, columns];
+
+        SpawnEnemiesGrid();
+        // wait one frame to ensure all Awake/Start have finished
+        PlayerManager.Instance.CreateNewPlayers();
+        yield return null;
+        
+        AssignAttackCountsByColor();
+
+
     }
     IEnumerator Start()
     {
@@ -44,51 +113,100 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         AssignAttackCountsByColor();
+        PlayerManager.Instance.StartAllPlayerAttacks();
 
-        Debug.Log($"RED enemies: {redEnemies.Count}");
-        Debug.Log($"BLUE enemies: {blueEnemies.Count}");
-        Debug.Log($"GREEN enemies: {greenEnemies.Count}");
+
+
     }
    
 
     void SpawnEnemiesGrid()
     {
-        Renderer prefabRenderer = enemyPrefab.GetComponent<Renderer>();
-        float enemyWidth = prefabRenderer != null ? prefabRenderer.bounds.size.x : 1f;
-        float enemyHeight = prefabRenderer != null ? prefabRenderer.bounds.size.y : 1f;
+        if (_currentLevelData.isRandomized) {
+            Renderer prefabRenderer = enemyPrefab.GetComponent<Renderer>();
+            float enemyWidth = prefabRenderer != null ? prefabRenderer.bounds.size.x : 1f;
+            float enemyHeight = prefabRenderer != null ? prefabRenderer.bounds.size.y : 1f;
+            numberOfEnemies = _currentLevelData.rows * _currentLevelData.columns;
+            int enemyCount = 0;
 
-        int enemyCount = 0;
-
-        for (int row = rows - 1; row >= 0; row--)
-        {
-            for (int col = 0; col < columns; col++)
+            for (int row = _currentLevelData.rows - 1; row >= 0; row--)
             {
-                if (enemyCount >= numberOfEnemies) return;
+                for (int col = 0; col < _currentLevelData.columns; col++)
+                {
+                    if (enemyCount >= numberOfEnemies) return;
 
-                Vector3 targetPos = startPosition + new Vector3(col * enemyWidth, row * enemyHeight, 0);
-                Vector3 spawnPos = targetPos + new Vector3(0, spawnOffsetY, 0);
+                    Vector3 targetPos = startPosition + new Vector3(col * enemyWidth, row * enemyHeight, 0);
+                    Vector3 spawnPos = targetPos + new Vector3(0, spawnOffsetY, 0);
 
-                GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
-                newEnemy.tag = "Enemy";
+                    GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+                    newEnemy.tag = "Enemy";
 
-                // Random material
-                Material randomMat = enemyMaterials[Random.Range(0, enemyMaterials.Length)];
-                Renderer rend = newEnemy.GetComponent<Renderer>();
-                if (rend != null)
-                    rend.material = randomMat;
+                    // Random material
+                    Material randomMat = enemyMaterials[Random.Range(0, _currentLevelData.colors.Length)];
+                    
+                    Renderer rend = newEnemy.GetComponent<Renderer>();
+                    if (rend != null)
+                        rend.material = randomMat;
 
-                // Add to color list
-                AddEnemyToColorList(newEnemy.transform, randomMat.name);
+                    // Add to color list
+                    AddEnemyToColorList(newEnemy.transform, randomMat.name);
 
-                // Movement
-                EnemyMovement move = newEnemy.GetComponent<EnemyMovement>();
-                if (move == null)
-                    move = newEnemy.AddComponent<EnemyMovement>();
+                    // Movement
+                    EnemyMovement move = newEnemy.GetComponent<EnemyMovement>();
+                    if (move == null)
+                        move = newEnemy.AddComponent<EnemyMovement>();
 
-                move.InitializeEnemy(row, col, targetPos);
-                enemyGrid[row, col] = move;
+                    move.InitializeEnemy(row, col, targetPos);
+                    enemyGrid[row, col] = move;
 
-                enemyCount++;
+                    enemyCount++;
+                }
+            }
+        }
+        else
+        {
+           
+            Renderer prefabRenderer = enemyPrefab.GetComponent<Renderer>();
+            float enemyWidth = prefabRenderer != null ? prefabRenderer.bounds.size.x : 1f;
+            float enemyHeight = prefabRenderer != null ? prefabRenderer.bounds.size.y : 1f;
+           
+            numberOfEnemies = _currentLevelData.levelLayout.Count * _currentLevelData.levelLayout[0].rowList.Count;
+           
+            int enemyCount = 0;
+
+            for (int row = _currentLevelData.levelLayout.Count - 1; row >= 0; row--)
+            {
+                for (int col = 0; col < _currentLevelData.levelLayout[0].rowList.Count; col++)
+                {
+                    if (enemyCount >= numberOfEnemies) return;
+
+                    Vector3 targetPos = startPosition + new Vector3(col * enemyWidth, row * enemyHeight, 0);
+                    Vector3 spawnPos = targetPos + new Vector3(0, spawnOffsetY, 0);
+
+                    GameObject newEnemy = Instantiate(enemyPrefab, spawnPos, Quaternion.identity);
+                    newEnemy.tag = "Enemy";
+
+               
+                     
+                    Material randomMat = _currentLevelData.colors[_currentLevelData.levelLayout[row].rowList[col]];
+
+                    Renderer rend = newEnemy.GetComponent<Renderer>();
+                    if (rend != null)
+                        rend.material = randomMat;
+
+                    // Add to color list
+                    AddEnemyToColorList(newEnemy.transform, randomMat.name);
+
+                    // Movement
+                    EnemyMovement move = newEnemy.GetComponent<EnemyMovement>();
+                    if (move == null)
+                        move = newEnemy.AddComponent<EnemyMovement>();
+
+                    move.InitializeEnemy(row, col, targetPos);
+                    enemyGrid[row, col] = move;
+
+                    enemyCount++;
+                }
             }
         }
     }
@@ -99,6 +217,7 @@ public class GameManager : MonoBehaviour
         if (lower.Contains("red")) redEnemies.Add(enemy);
         else if (lower.Contains("blue")) blueEnemies.Add(enemy);
         else if (lower.Contains("green")) greenEnemies.Add(enemy);
+        else if (lower.Contains("yellow")) yellowEnemies.Add(enemy);
     }
 
     public Transform GetFrontlineEnemy(string colorName)
@@ -107,6 +226,7 @@ public class GameManager : MonoBehaviour
         if (colorName.ToLower().Contains("red")) list = redEnemies;
         else if (colorName.ToLower().Contains("blue")) list = blueEnemies;
         else if (colorName.ToLower().Contains("green")) list = greenEnemies;
+        else if (colorName.ToLower().Contains("yellow")) list = yellowEnemies;
 
         if (list == null || list.Count == 0) return null;
 
@@ -165,6 +285,7 @@ public class GameManager : MonoBehaviour
         if (lower.Contains("red")) colorList = redEnemies;
         else if (lower.Contains("blue")) colorList = blueEnemies;
         else if (lower.Contains("green")) colorList = greenEnemies;
+        else if (lower.Contains("yellow")) colorList = yellowEnemies;
 
         if (colorList == null|| colorList.Count<=0)
         {
@@ -185,9 +306,6 @@ public class GameManager : MonoBehaviour
         return firstRow;
     }
 
-    // ================================
-    //  NEW SECTION: Attack Count Distribution
-    // ================================
     void AssignAttackCountsByColor()
     {
         GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
@@ -202,7 +320,7 @@ public class GameManager : MonoBehaviour
 
         if (players.Count == 0)
         {
-            Debug.LogWarning("[GameManager] No players found for attack assignment!");
+        
             return;
         }
 
@@ -220,13 +338,13 @@ public class GameManager : MonoBehaviour
         AssignColor("red", redEnemies, playersByColor);
         AssignColor("blue", blueEnemies, playersByColor);
         AssignColor("green", greenEnemies, playersByColor);
+        AssignColor("yellow", yellowEnemies, playersByColor);
     }
 
     void AssignColor(string color, List<Transform> colorEnemies, Dictionary<string, List<PlayerAttack>> playersByColor)
     {
         if (!playersByColor.ContainsKey(color))
         {
-            Debug.Log($"[AssignAttackCounts] No {color} players found.");
             return;
         }
 
@@ -236,74 +354,67 @@ public class GameManager : MonoBehaviour
 
         if (totalEnemies == 0)
         {
-            Debug.Log($"[AssignAttackCounts] No {color} enemies found.");
+
             return;
         }
 
-        int[] split = GenerateRandomSplit(totalEnemies, colorPlayers.Count);
+     
+        int[] split = GenerateEvenSplit(totalEnemies, colorPlayers.Count);
 
         for (int i = 0; i < colorPlayers.Count; i++)
         {
             // Explicitly cast the argument to ensure the correct method is called
             colorPlayers[i].SetAttackCount(split[i]); // Removed redundant cast to (int)
-            Debug.Log($"[{color.ToUpper()}] {colorPlayers[i].name} → {split[i]} attacks");
+
         }
 
         int totalAssigned = split.Sum();
-        Debug.Log($"✅ [{color.ToUpper()}] Total attacks = {totalAssigned}/{totalEnemies}");
+
     }
 
-    int[] GenerateRandomSplit(int total, int parts)
+
+    // Generates a fair even split that always sums exactly to total
+    int[] GenerateEvenSplit(int total, int parts)
     {
         int[] result = new int[parts];
-        if (parts == 0) return result;
+        if (parts == 0 || total == 0) return result;
 
-        // Generate random cut points between 0 and total
-        List<int> cuts = new List<int>();
-        for (int i = 0; i < parts - 1; i++)
-            cuts.Add(Random.Range(0, total + 1));
+        int baseShare = total / parts;
+        int remainder = total % parts;
 
-        cuts.Sort();
-
-        int prev = 0;
-        for (int i = 0; i < parts - 1; i++)
+        for (int i = 0; i < parts; i++)
         {
-            result[i] = cuts[i] - prev;
-            prev = cuts[i];
+            result[i] = baseShare;
+            if (i < remainder)
+                result[i]++;
         }
 
-        result[parts - 1] = total - prev;
-
-        // Ensure nobody gets 0 (optional)
+        // Optional shuffle for randomness
         for (int i = 0; i < result.Length; i++)
         {
-            if (result[i] == 0) result[i] = 1;
-        }
-
-        // Adjust total back if we overshoot after forcing ≥1
-        int currentSum = result.Sum();
-        while (currentSum > total)
-        {
-            int idx = Random.Range(0, result.Length);
-            if (result[idx] > 1)
-            {
-                result[idx]--;
-                currentSum--;
-            }
-        }
-
-        // Shuffle for randomness
-        for (int i = 0; i < result.Length; i++)
-        {
-            int rand = Random.Range(0, result.Length);
-            (result[i], result[rand]) = (result[rand], result[i]);
+            int j = Random.Range(0, result.Length);
+            (result[i], result[j]) = (result[j], result[i]);
         }
 
         return result;
     }
+
+    
     private void OnApplicationQuit()
     {
         PlayerPrefs.SetInt("currentLevelIndex", currentLevelIndex);
     }
-
+    public void LevelUP() {
+      
+        if (currentLevelIndex < levelData.levelEntries.Length ) { 
+           
+            Debug.Log("inside if Condition Level up : " );
+            currentLevelIndex++;
+            PlayerPrefs.SetInt("currentLevelIndex", currentLevelIndex);
+            StartCoroutine(InitializeLevel());
+          
+           
+        }
+    
+    }
 }

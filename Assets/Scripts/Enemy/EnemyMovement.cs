@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public float moveSpeed = 2f;
     private int row, column;
-    public int Row => row;            // <-- expose row to other scripts
+    public int Row => row;         
     public int Column => column;
 
     private bool isMoving = false;
@@ -31,6 +31,10 @@ public class EnemyMovement : MonoBehaviour
         {
             currentListToCheck = GameManager.Instance.greenEnemies;
             colorEnemy = "green";
+        } if (gameObject.GetComponent<MeshRenderer>().material.name.Contains("Yellow_Mat"))
+        {
+            currentListToCheck = GameManager.Instance.yellowEnemies;
+            colorEnemy = "yellow";
         }
     }
     public void InitializeEnemy(int r, int c, Vector3 startPos)

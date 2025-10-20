@@ -18,19 +18,29 @@ public class EnemyDie : MonoBehaviour
             if (currentColor == "red")
             {
                 GameManager.Instance.redEnemies.Remove(gameObject.transform);
+                GameManager.Instance.NumberOfEnemiesDefeated += 1;
                 Destroy(gameObject);
             }
             if (currentColor == "blue")
             {
                 GameManager.Instance.blueEnemies.Remove(gameObject.transform);
+                GameManager.Instance.NumberOfEnemiesDefeated += 1;
                 Destroy(gameObject);
             }
             if (currentColor == "green")
             {
                 GameManager.Instance.greenEnemies.Remove(gameObject.transform);
+                GameManager.Instance.NumberOfEnemiesDefeated += 1;
+                Destroy(gameObject);
+            }
+            if (currentColor == "yellow")
+            {
+                GameManager.Instance.yellowEnemies.Remove(gameObject.transform);
+                GameManager.Instance.NumberOfEnemiesDefeated += 1;
                 Destroy(gameObject);
             }
         } );
+        
     }
     
 

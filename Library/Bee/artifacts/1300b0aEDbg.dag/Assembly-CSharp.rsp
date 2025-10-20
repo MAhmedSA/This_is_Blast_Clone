@@ -420,6 +420,7 @@
 "Assets/Scripts/Manager/GameManager/GameManager.cs"
 "Assets/Scripts/Manager/LoadManager/LoadingManager.cs"
 "Assets/Scripts/Manager/SoundManager/AudioManager.cs"
+"Assets/Scripts/Manager/TutoriallManager/TutorialManager.cs"
 "Assets/Scripts/Manager/UIManager/UIManager.cs"
 "Assets/Scripts/Player/ObjectPool.cs"
 "Assets/Scripts/Player/PlayerAttack.cs"

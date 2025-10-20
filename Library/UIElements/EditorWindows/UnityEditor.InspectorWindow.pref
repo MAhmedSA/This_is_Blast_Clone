@@ -87,36 +87,96 @@ MonoBehaviour:
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelData__UnityEngine.UIElements.ListView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelData__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
   - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelData__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[4].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[4].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[4].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[5].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[5].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[0].levelLayout.Array.data[5].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].colors__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].colors__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].colors__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].environmentMat__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].environmentMat__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].environmentMat__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-yellowEnemies__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-yellowEnemies__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-yellowEnemies__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[0].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[0].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[0].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-coins__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-coins__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-coins__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[1].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[1].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[1].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[2].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[2].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[2].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[3].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[3].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[3].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[4].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[4].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[4].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[5].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[5].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[5].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[6].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[6].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[6].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[7].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[7].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[7].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[8].rowList__UnityEngine.UIElements.ListView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[8].rowList__unity-vertical-collection-scroll-view__UnityEngine.UIElements.ScrollView
+  - __PanelContainer__rootVisualContainer__inspector-window-main-scroll-view__unity-list-levelEntries__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout__unity-vertical-collection-scroll-view__unity-list-levelEntries.Array.data[1].levelLayout.Array.data[8].rowList__unity-vertical-collection-scroll-view__Slider__UnityEngine.UIElements.Scroller+ScrollerSlider
   m_Values:
   - '{}'
   - '{}'
   - '{}'
   - '{}'
   - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
-  - '{}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":88.0,"anchoredItemIndex":0,"anchorOffset":0.0},"m_SelectedIds":[1]}'
+  - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
+  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":132.0,"anchoredItemIndex":0,"anchorOffset":0.0},"m_SelectedIds":[]}'
+  - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
+  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
   - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":66.0,"anchoredItemIndex":0,"anchorOffset":0.0},"m_SelectedIds":[]}'
   - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
   - '{}'
   - '{}'
   - '{}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0},"m_SelectedIds":[]}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":66.0,"anchoredItemIndex":0,"anchorOffset":0.0},"m_SelectedIds":[0]}'
   - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
   - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0},"m_SelectedIds":[]}'
-  - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
-  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":0.0,"anchoredItemIndex":-1,"anchorOffset":0.0},"m_SelectedIds":[]}'
-  - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
-  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
   - '{}'
   - '{}'
   - '{}'
@@ -159,6 +219,42 @@ MonoBehaviour:
   - '{}'
   - '{}'
   - '{}'
-  - '{"m_ShowAlternatingRowBackgrounds":0,"serializedVirtualizationData":{"scrollOffset":{"x":0.0,"y":0.0},"firstVisibleIndex":0,"contentPadding":0.0,"contentHeight":44.0,"anchoredItemIndex":0,"anchorOffset":0.0},"m_SelectedIds":[]}'
-  - '{"m_ScrollOffset":{"x":0.0,"y":0.0}}'
-  - '{"m_Value":0.0,"m_LowValue":0.0,"m_HighValue":0.0}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'
+  - '{}'

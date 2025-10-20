@@ -35,7 +35,10 @@ public class PlayerTouch : MonoBehaviour
                                 Transform freeSlot = PlayerManager.Instance.GetFreeLocation();
                                 if (freeSlot != null)
                                 {
-                                    player.MoveTo(freeSlot.position);
+                                    if (!TutorialManager.instance.IsTutorialCompleted) {
+                                        TutorialManager.instance.DisapleTutorial();
+                                    }
+                                    player.MoveTo(freeSlot.position, freeSlot); 
                                 }
                             }
                         }

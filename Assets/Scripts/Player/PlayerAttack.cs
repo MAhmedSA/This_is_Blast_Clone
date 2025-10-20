@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
@@ -18,8 +19,11 @@ public class PlayerAttack : MonoBehaviour
     private bool canShoot = true;
     private TextMeshProUGUI attackText;
     public List<Transform> allowedEnemies = new List<Transform>();
+
+    [SerializeField] Transform targetPosOutScreen;
     private void Awake()
     {
+        targetPosOutScreen= GameObject.FindWithTag("OutSidePos").transform;
         // Find the Text component inside the prefab
         attackText = GetComponentInChildren<TextMeshProUGUI>();
 
@@ -27,17 +31,6 @@ public class PlayerAttack : MonoBehaviour
         UpdateAttackText();
     }
    
-
-    //public void AssignEnemies(List<Transform> enemies)
-    //{
-    //    allowedEnemies = enemies;
-    //}
-
-    //public bool CanAttack(Transform enemy)
-    //{
-    //    // Only attack if enemy is in allowed list and still alive
-    //    return allowedEnemies.Contains(enemy);
-    //}
     private void Update()
     {
         if (!isAttacking || targetEnemies.Count == 0) return;
@@ -55,7 +48,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (currentTarget == null)
         {
-            Debug.Log($"[PlayerAttack] target at index {currentTargetIndex} is null, skipping.");
+           
             currentTargetIndex++;
             return;
         }
@@ -100,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (enemies == null || enemies.Count == 0)
         {
-            Debug.Log($"[PlayerAttack] EnableAttack called but no enemies for color {playerColor}");
+           
             return;
         }
 
@@ -109,8 +102,8 @@ public class PlayerAttack : MonoBehaviour
         targetEnemies = enemies.GetRange(0, count);
         currentTargetIndex = 0;
         isAttacking = true;
-        //canShoot = true;
-        Debug.Log($"[PlayerAttack] {name} started attacking {targetEnemies.Count} enemies of color {playerColor}");
+       
+     
     }
     public void SetAttack() {
         
@@ -121,7 +114,7 @@ public class PlayerAttack : MonoBehaviour
         GameObject proj = ObjectPool.Instance.SpawnFromPool(projectileTag, transform.position, Quaternion.identity);
         if (proj == null)
         {
-            Debug.LogWarning("[PlayerAttack] Projectile pool returned null.");
+           
             return;
         }
 
@@ -129,7 +122,7 @@ public class PlayerAttack : MonoBehaviour
         Projectile p = proj.GetComponent<Projectile>();
         if (p == null)
         {
-            Debug.LogWarning("[PlayerAttack] Spawned projectile missing Projectile component.");
+         
             return;
         }
 
@@ -157,6 +150,10 @@ public class PlayerAttack : MonoBehaviour
     private void OnProjectileHit(Transform hitTarget)
     {
         attackCount = Mathf.Max(0, attackCount - 1);
+        if (attackCount == 0) {
+            // play animation to make player move out side screen and destroy player object
+            FinishPlayerRole();
+        }
         UpdateAttackText();
         // if hitTarget equals current target, advance
         if (currentTargetIndex < targetEnemies.Count && targetEnemies[currentTargetIndex] == hitTarget)
@@ -180,8 +177,27 @@ public class PlayerAttack : MonoBehaviour
     private void FinishAttacking()
     {
         isAttacking = false;
-        Debug.Log($"[PlayerAttack] {name} finished attacking color {playerColor}");
+       
         if (PlayerManager.Instance != null)
             PlayerManager.Instance.UnlockColorAttack(playerColor);
+    }
+
+    void FinishPlayerRole()
+    {
+        if (GetComponent<PlayerMovement>() != null)
+        {
+            PlayerMovement pm = GetComponent<PlayerMovement>();
+            if (pm.currentSlot != null)
+            {
+                PlayerManager.Instance.FreeLocation(pm.currentSlot);
+            }
+        }
+
+        DOTween.To(() => transform.position, x => transform.position = x, targetPosOutScreen.position, 3f)
+            .OnComplete(() =>
+            {
+                PlayerManager.Instance.touchedPlayers.Remove(this.gameObject);
+                Destroy(gameObject);
+            });
     }
 }
