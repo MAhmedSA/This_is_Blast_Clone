@@ -38,6 +38,7 @@ public class PlayerTouch : MonoBehaviour
                                     if (!TutorialManager.instance.IsTutorialCompleted) {
                                         TutorialManager.instance.DisapleTutorial();
                                     }
+                                    PlayerManager.Instance.touchedPlayers.Add(hit.collider.gameObject);
                                     player.MoveTo(freeSlot.position, freeSlot); 
                                 }
                             }

@@ -2,120 +2,226 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAttack : MonoBehaviour
 {
     public string projectileTag = "Bullet";
     public float moveSpeed = 5f;
-    public float attackCooldown = 2f;
+    public float attackCooldown = 1f;
     public string playerColor;
-    public int attackCount =2; // Number shown on player
+    public int attackCount = 2;
 
-    private List<Transform> targetEnemies = new List<Transform>();
+    public List<Transform> targetEnemies = new List<Transform>();
     private int currentTargetIndex = 0;
-    private bool isAttacking = false;
+    public bool isAttacking = false;
     private bool canShoot = true;
+    
     private TextMeshProUGUI attackText;
-    public List<Transform> allowedEnemies = new List<Transform>();
-
+    public bool isFirstRow;
     [SerializeField] Transform targetPosOutScreen;
+
+    private int originalAttackCount;
+    private Coroutine attackWaitCoroutine;
+    private bool isProcessingHit = false;
+
     private void Awake()
     {
-        targetPosOutScreen= GameObject.FindWithTag("OutSidePos").transform;
-        // Find the Text component inside the prefab
+        targetPosOutScreen = GameObject.FindWithTag("OutSidePos").transform;
         attackText = GetComponentInChildren<TextMeshProUGUI>();
-
-        // Update text when starting (if already assigned)
+        originalAttackCount = attackCount;
         UpdateAttackText();
     }
-   
+
     private void Update()
     {
-        if (!isAttacking || targetEnemies.Count == 0) return;
+        if (!isAttacking) return;
 
-        if (currentTargetIndex >= targetEnemies.Count)
+        // Check if we should stop attacking
+        if (attackCount <= 0 || !HasValidTargets())
         {
             FinishAttacking();
             return;
         }
 
-        Transform currentTarget=null;
-        if (targetEnemies[currentTargetIndex] != null) {
-            currentTarget = targetEnemies[currentTargetIndex];
-        }
-
+        // Get current target safely
+        Transform currentTarget = GetCurrentTarget();
         if (currentTarget == null)
         {
-           
-            currentTargetIndex++;
+            AdvanceToNextTarget();
             return;
         }
 
-       
-        // Attack without moving
-        if (canShoot)
+        if (canShoot && !isProcessingHit)
         {
-            // Rotate player in Z axis only (for 2.5D setup)
+            // Rotation code
             Vector3 targetPos = currentTarget.position;
             Vector3 direction = targetPos - transform.position;
-            direction.y = 0f; // ignore vertical rotation
+            direction.y = 0f;
 
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            if (direction != Vector3.zero)
+            {
+                Quaternion lookRotation = Quaternion.LookRotation(direction);
+                Quaternion targetRotation = Quaternion.Euler(0f, 0f, lookRotation.eulerAngles.y);
 
-            // Convert it to Z-axis rotation
-            Quaternion targetRotation = Quaternion.Euler(0f, 0f, lookRotation.eulerAngles.y);
+                float rotationSpeed = 5f;
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+            }
 
-            // Smoothly rotate using Slerp
-            float rotationSpeed = 5f; // adjust for smoothness
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-            
             ShootProjectile(currentTarget);
             canShoot = false;
-            StartCoroutine(AttackWaitCoroutine());
-            
+
+            // Start coroutine and store reference
+            if (attackWaitCoroutine != null)
+                StopCoroutine(attackWaitCoroutine);
+            attackWaitCoroutine = StartCoroutine(AttackWaitCoroutine());
+        }
+    }
+
+    private bool HasValidTargets()
+    {
+        if (targetEnemies.Count == 0) return false;
+
+        foreach (var target in targetEnemies)
+        {
+            if (target != null && target.gameObject.activeInHierarchy) return true;
+        }
+        return false;
+    }
+
+    private Transform GetCurrentTarget()
+    {
+        if (currentTargetIndex < targetEnemies.Count &&
+            targetEnemies[currentTargetIndex] != null &&
+            targetEnemies[currentTargetIndex].gameObject.activeInHierarchy)
+        {
+            return targetEnemies[currentTargetIndex];
+        }
+        return null;
+    }
+
+    private void AdvanceToNextTarget()
+    {
+        // Find next valid target without recursion
+        int startIndex = currentTargetIndex;
+        currentTargetIndex++;
+
+        while (currentTargetIndex < targetEnemies.Count)
+        {
+            if (targetEnemies[currentTargetIndex] != null && targetEnemies[currentTargetIndex].gameObject.activeInHierarchy)
+            {
+                return; // Found valid target
+            }
+            currentTargetIndex++;
+        }
+
+        // If we reached the end and no valid target found
+        if (currentTargetIndex >= targetEnemies.Count)
+        {
+            // Try to find any valid target from the beginning
+            for (int i = 0; i < targetEnemies.Count; i++)
+            {
+                if (targetEnemies[i] != null && targetEnemies[i].gameObject.activeInHierarchy)
+                {
+                    currentTargetIndex = i;
+                    return;
+                }
+            }
+
+            // No valid targets found at all
+            FinishAttacking();
         }
     }
 
     public void SetAttackCount(int value)
     {
         this.attackCount = value;
+        this.originalAttackCount = value;
         UpdateAttackText();
     }
+
     public void AssignTargets(List<Transform> enemyList)
     {
-        targetEnemies = enemyList ?? new List<Transform>();
-        attackCount = targetEnemies.Count;   // sync count with assigned enemies
-        UpdateAttackText();
+        // Filter out null and inactive enemies
+        targetEnemies = enemyList?.FindAll(t => t != null && t.gameObject.activeInHierarchy) ?? new List<Transform>();
         currentTargetIndex = 0;
-        isAttacking = targetEnemies.Count > 0;
+
+        // Find first valid target
+        AdvanceToNextTarget();
+
+        UpdateAttackText();
     }
+
     private void UpdateAttackText()
     {
         if (attackText != null)
             attackText.text = attackCount.ToString();
     }
+
     public void EnableAttack(List<Transform> enemies)
     {
         if (enemies == null || enemies.Count == 0) return;
 
-        int count = Mathf.Min(attackCount, enemies.Count);
-        targetEnemies = enemies.GetRange(0, count);
-        currentTargetIndex = 0;
-        isAttacking = true;
-    }   
-    public void SetAttack() {
-        
-        isAttacking = true;
+        // Filter out null and inactive enemies
+        List<Transform> validEnemies = enemies.FindAll(t => t != null && t.gameObject.activeInHierarchy);
+        int count = Mathf.Min(attackCount, validEnemies.Count);
+
+        if (count > 0)
+        {
+            targetEnemies = validEnemies.GetRange(0, count);
+            currentTargetIndex = 0;
+            AdvanceToNextTarget();
+            UpdateAttackText();
+        }
+        else
+        {
+          
+            FinishAttacking();
+        }
     }
+
+    public void SetAttack()
+    {
+        if (targetEnemies.Count > 0 && HasValidTargets() && attackCount > 0)
+        {
+            isAttacking = true;
+            canShoot = true;
+           
+        }
+        else
+        {
+           
+            FinishAttacking();
+        }
+    }
+
+    public void StopAttack()
+    {
+        isAttacking = false;
+        canShoot = false;
+
+        if (attackWaitCoroutine != null)
+        {
+            StopCoroutine(attackWaitCoroutine);
+            attackWaitCoroutine = null;
+        }
+    }
+
     private void ShootProjectile(Transform target)
     {
+        if (target == null || !target.gameObject.activeInHierarchy)
+        {
+          
+            AdvanceToNextTarget();
+            canShoot = true;
+            return;
+        }
+
         GameObject proj = ObjectPool.Instance.SpawnFromPool(projectileTag, transform.position, Quaternion.identity);
         if (proj == null)
         {
            
+            canShoot = true;
             return;
         }
 
@@ -123,21 +229,20 @@ public class PlayerAttack : MonoBehaviour
         Projectile p = proj.GetComponent<Projectile>();
         if (p == null)
         {
-         
+           
+            canShoot = true;
             return;
         }
 
         p.SetTarget(target);
-
-        // wire up callback safely
         p.onHit = () =>
         {
             OnProjectileHit(target);
         };
 
-        // play sound if you have AudioManager (safe-guard)
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlaySound("Attack");
+
        
     }
 
@@ -145,31 +250,39 @@ public class PlayerAttack : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         canShoot = true;
+        attackWaitCoroutine = null;
     }
 
-    // Now pass the target that was hit — helps us verify same target
     private void OnProjectileHit(Transform hitTarget)
     {
+        if (isProcessingHit) return; // Prevent re-entrancy
+
+        isProcessingHit = true;
+
+      
+
+        // Decrement the current attack count
         attackCount = Mathf.Max(0, attackCount - 1);
-        if (attackCount == 0) {
-            // play animation to make player move out side screen and destroy player object
-            FinishPlayerRole();
-        }
         UpdateAttackText();
-        // if hitTarget equals current target, advance
-        if (currentTargetIndex < targetEnemies.Count && targetEnemies[currentTargetIndex] == hitTarget)
+
+        // Mark this target as hit (but don't remove from list to maintain indices)
+        if (hitTarget != null)
         {
-            currentTargetIndex++;
-        }
-        else
-        {
-            // If not, find and remove it if present
-            int found = targetEnemies.IndexOf(hitTarget);
-            if (found >= 0) targetEnemies.RemoveAt(found);
+            // The target should be handled by the enemy system
+            // We just advance to next target
         }
 
-        // If we've exhausted targets, finish
-        if (currentTargetIndex >= targetEnemies.Count)
+        // Move to next target
+        AdvanceToNextTarget();
+
+        isProcessingHit = false;
+
+        // Check if we should finish
+        if (attackCount <= 0)
+        {
+            FinishPlayerRole();
+        }
+        else if (!HasValidTargets())
         {
             FinishAttacking();
         }
@@ -177,14 +290,21 @@ public class PlayerAttack : MonoBehaviour
 
     private void FinishAttacking()
     {
-        isAttacking = false;
+        if (!isAttacking) return; // Already finished
+
        
+
+        StopAttack();
+
         if (PlayerManager.Instance != null)
             PlayerManager.Instance.UnlockColorAttack(playerColor);
     }
 
     void FinishPlayerRole()
     {
+       
+        StopAttack();
+
         if (GetComponent<PlayerMovement>() != null)
         {
             PlayerMovement pm = GetComponent<PlayerMovement>();
@@ -197,8 +317,24 @@ public class PlayerAttack : MonoBehaviour
         DOTween.To(() => transform.position, x => transform.position = x, targetPosOutScreen.position, 3f)
             .OnComplete(() =>
             {
-                PlayerManager.Instance.touchedPlayers.Remove(this.gameObject);
+                if (PlayerManager.Instance != null)
+                {
+                    PlayerManager.Instance.touchedPlayers.Remove(this.gameObject);
+                    PlayerManager.Instance.PlayerLeftPosition(this.gameObject);
+                }
                 Destroy(gameObject);
             });
+    }
+
+    public void ResetAttackCount()
+    {
+        attackCount = originalAttackCount;
+        UpdateAttackText();
+    }
+
+    // Clean up when destroyed
+    private void OnDestroy()
+    {
+        StopAttack();
     }
 }

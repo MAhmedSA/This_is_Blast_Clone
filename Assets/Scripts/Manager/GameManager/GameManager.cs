@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         AssignAttackCountsByColor();
-        PlayerManager.Instance.StartAllPlayerAttacks();
+        //PlayerManager.Instance.StartAllPlayerAttacks();
 
 
 
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
                     enemyCount++;
                 }
             }
-            Debug.Log("Yellow Enemies: " + yellowEnemies.Count);
+          
         }
 
     }
@@ -292,7 +292,7 @@ public class GameManager : MonoBehaviour
 
         if (colorList == null|| colorList.Count<=0)
         {
-            Debug.LogWarning($"[GameManager] Color list not found for '{color}'");
+            
             return new List<Transform>();
         }
 
@@ -305,7 +305,7 @@ public class GameManager : MonoBehaviour
         foreach (var e in colorList)
             if (e != null && Mathf.Abs(e.position.y - minY) < 0.1f)
                 firstRow.Add(e);
-        Debug.Log($"[GameManager] Found {firstRow.Count} '{color}' enemies in the first row (Y={minY})");
+      
         return firstRow;
     }
 

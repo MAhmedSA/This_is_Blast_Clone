@@ -103,15 +103,17 @@ public class EnemyMovement : MonoBehaviour
 
         if (row == 0)
         {
-            Debug.Log($"{name} reached first line → Checking player attack.");
+         
             for (int i = 0; i < PlayerManager.Instance.touchedPlayers.Count; i++) {
                 List<Transform> currentEnemiesColor=   GameManager.Instance.GetFirstRowEnemiesByColor(PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().playerColor);
-                PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().EnableAttack(currentEnemiesColor);
+                PlayerAttack currentAttacker = PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>();
 
-                if (PlayerManager.Instance.touchedPlayers[i].GetComponent<PlayerAttack>().playerColor == colorEnemy) {
-                    
-                    Debug.Log($"{name} matched with {PlayerManager.Instance.touchedPlayers[i].name} color attack.");
+                currentAttacker.EnableAttack(currentEnemiesColor);
 
+                if (currentAttacker.playerColor == colorEnemy) {
+                    if (!currentAttacker.isAttacking)
+                        currentAttacker.SetAttack();
+                   
                 }
             
             }

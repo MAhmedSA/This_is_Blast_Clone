@@ -389,6 +389,7 @@
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"C:/Program Files/Unity/Hub/Editor/6000.0.59f2/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
+"Assets/FrameRate.cs"
 "Assets/Packages/Epic Toon FX/Demo/Scripts/ETFXButtonScript.cs"
 "Assets/Packages/Epic Toon FX/Demo/Scripts/ETFXFireProjectile.cs"
 "Assets/Packages/Epic Toon FX/Demo/Scripts/ETFXLoopScript.cs"

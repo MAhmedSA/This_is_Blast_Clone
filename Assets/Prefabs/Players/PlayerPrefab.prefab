@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
+  currentSlot: {fileID: 0}
 --- !u!65 &-6900970078819785879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -225,10 +226,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileTag: Bullet
   moveSpeed: 5
-  attackCooldown: 1.5
+  attackCooldown: 1
   playerColor: 
   attackCount: 1
-  allowedEnemies: []
+  targetEnemies: []
+  isAttacking: 0
+  isFirstRow: 0
+  targetPosOutScreen: {fileID: 0}
 --- !u!1 &2667915090476468464
 GameObject:
   m_ObjectHideFlags: 0

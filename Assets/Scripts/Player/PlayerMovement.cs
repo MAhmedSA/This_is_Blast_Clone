@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -5,8 +6,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 3f;
     private Vector3 targetPosition;
     private bool isMoving = false;
-    private bool hasArrived = false; //  new flag to prevent re-clicking
-    public bool HasArrived => hasArrived; // public to read only in input to know he is arrived or no 
+    private bool hasArrived = false;
+    public bool HasArrived => hasArrived;
 
     public Transform currentSlot;
     private PlayerAttack playerAttack;
@@ -18,9 +19,8 @@ public class PlayerMovement : MonoBehaviour
             playerAttack = gameObject.AddComponent<PlayerAttack>();
     }
 
-    public void MoveTo(Vector3 position,Transform slot = null)
+    public void MoveTo(Vector3 position, Transform slot = null)
     {
-        //  Prevent moving again if already arrived
         if (hasArrived) return;
         currentSlot = slot;
         targetPosition = position;
@@ -36,16 +36,14 @@ public class PlayerMovement : MonoBehaviour
             if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
             {
                 isMoving = false;
-                hasArrived = true; //  lock movement after arrival
-                PlayerManager.Instance.touchedPlayers.Add(this.gameObject); // to control in other thing
-                // When arrived, enable attack for this player
+                hasArrived = true;
+                PlayerManager.Instance.touchedPlayers.Add(this.gameObject);
+
                 if (playerAttack != null)
                 {
-                    Transform enemy = GameManager.Instance.GetFrontlineEnemy(playerAttack.playerColor);
-                    if (enemy != null)
-                    {
-                        playerAttack.EnableAttack(GameManager.Instance.GetFirstRowEnemiesByColor(playerAttack.playerColor));
-                    }
+                    // Use the new method that prevents enemy duplication
+                    PlayerManager.Instance.AssignEnemiesToPlayer(this.gameObject);
+                    playerAttack.SetAttack();
                 }
             }
         }

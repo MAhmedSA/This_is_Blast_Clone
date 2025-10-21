@@ -7,16 +7,14 @@ public class AudioDatabase : ScriptableObject
     [System.Serializable]
     public class AudioEntry
     {
-        public string id;       // Unique ID for this sound
-        public AudioClip clip;  // Audio clip reference
-        public bool isLooping; // Is the audio looping
+        public string id;      
+        public AudioClip clip; 
+        public bool isLooping; 
     }
 
     public List<AudioEntry> audioList = new List<AudioEntry>();
 
-    /// <summary>
-    /// Get AudioClip by id
-    /// </summary>
+   
     public AudioClip GetClipById(string id)
     {
         foreach (var entry in audioList)
@@ -24,7 +22,7 @@ public class AudioDatabase : ScriptableObject
             if (entry.id == id)
                 return entry.clip;
         }
-        Debug.LogWarning("AudioClip with ID " + id + " not found!");
+       
         return null;
     }
 }
