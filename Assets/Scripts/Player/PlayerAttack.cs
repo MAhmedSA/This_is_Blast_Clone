@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -83,7 +84,14 @@ public class PlayerAttack : MonoBehaviour
         this.attackCount = value;
         UpdateAttackText();
     }
-
+    public void AssignTargets(List<Transform> enemyList)
+    {
+        targetEnemies = enemyList ?? new List<Transform>();
+        attackCount = targetEnemies.Count;   // sync count with assigned enemies
+        UpdateAttackText();
+        currentTargetIndex = 0;
+        isAttacking = targetEnemies.Count > 0;
+    }
     private void UpdateAttackText()
     {
         if (attackText != null)
@@ -91,20 +99,13 @@ public class PlayerAttack : MonoBehaviour
     }
     public void EnableAttack(List<Transform> enemies)
     {
-        if (enemies == null || enemies.Count == 0)
-        {
-           
-            return;
-        }
+        if (enemies == null || enemies.Count == 0) return;
 
-        // respect attackCount (limit how many targets we will try)
         int count = Mathf.Min(attackCount, enemies.Count);
         targetEnemies = enemies.GetRange(0, count);
         currentTargetIndex = 0;
         isAttacking = true;
-       
-     
-    }
+    }   
     public void SetAttack() {
         
         isAttacking = true;

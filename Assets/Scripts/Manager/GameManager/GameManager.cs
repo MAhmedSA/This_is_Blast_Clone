@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyPrefab;
     public Material[] enemyMaterials;
     public int numberOfEnemies ;
+
     [Header("Level Data")]
     public LevelData  levelData;
     private LevelData.LevelEntry  _currentLevelData;
@@ -50,7 +51,7 @@ public class GameManager : MonoBehaviour
     public List<Transform> yellowEnemies = new List<Transform>();
 
     public static GameManager Instance;
-    Coroutine IntilizeCorotine;
+    
     void Awake()
     {
         currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex",1);
@@ -71,15 +72,17 @@ public class GameManager : MonoBehaviour
         numberOfEnemies = rows * columns;
 
         enemyGrid = new EnemyMovement[rows, columns];
+        
     }
-    IEnumerator InitializeLevel() {
+    IEnumerator InitializeLevel()
+    {
         NumberOfEnemiesDefeated = 0;
         levelPrecentage = 0;
-        PlayerManager.Instance.ClearAllPlayers();
-        currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 1);
-        _currentLevelData = levelData.levelEntries[currentLevelIndex-1];
 
-        Instance = this;
+        //PlayerManager.Instance.CreateNewPlayers();
+
+        currentLevelIndex = PlayerPrefs.GetInt("currentLevelIndex", 1);
+        _currentLevelData = levelData.levelEntries[currentLevelIndex - 1];
 
         if (_currentLevelData.isRandomized)
         {
@@ -90,20 +93,15 @@ public class GameManager : MonoBehaviour
         {
             rows = _currentLevelData.levelLayout.Count;
             columns = _currentLevelData.levelLayout[0].rowList.Count;
-
         }
-        numberOfEnemies = rows * columns;
 
+        numberOfEnemies = rows * columns;
         enemyGrid = new EnemyMovement[rows, columns];
 
-        SpawnEnemiesGrid();
-        // wait one frame to ensure all Awake/Start have finished
         PlayerManager.Instance.CreateNewPlayers();
-        yield return null;
-        
+        SpawnEnemiesGrid();
+        yield return new WaitForSeconds(3f);
         AssignAttackCountsByColor();
-
-
     }
     IEnumerator Start()
     {
@@ -208,7 +206,9 @@ public class GameManager : MonoBehaviour
                     enemyCount++;
                 }
             }
+            Debug.Log("Yellow Enemies: " + yellowEnemies.Count);
         }
+
     }
 
     void AddEnemyToColorList(Transform enemy, string matName)
@@ -218,6 +218,9 @@ public class GameManager : MonoBehaviour
         else if (lower.Contains("blue")) blueEnemies.Add(enemy);
         else if (lower.Contains("green")) greenEnemies.Add(enemy);
         else if (lower.Contains("yellow")) yellowEnemies.Add(enemy);
+
+      
+            
     }
 
     public Transform GetFrontlineEnemy(string colorName)
@@ -343,33 +346,20 @@ public class GameManager : MonoBehaviour
 
     void AssignColor(string color, List<Transform> colorEnemies, Dictionary<string, List<PlayerAttack>> playersByColor)
     {
-        if (!playersByColor.ContainsKey(color))
-        {
-            return;
-        }
+        if (!playersByColor.ContainsKey(color)) return;
 
         List<PlayerAttack> colorPlayers = playersByColor[color];
+        int totalEnemies = colorEnemies.Count;
 
-        int totalEnemies = colorEnemies.Count; //  use all enemies of this color
+        if (totalEnemies == 0) return;
 
-        if (totalEnemies == 0)
-        {
-
-            return;
-        }
-
-     
+        // Split enemies fairly across players
         int[] split = GenerateEvenSplit(totalEnemies, colorPlayers.Count);
 
         for (int i = 0; i < colorPlayers.Count; i++)
         {
-            // Explicitly cast the argument to ensure the correct method is called
-            colorPlayers[i].SetAttackCount(split[i]); // Removed redundant cast to (int)
-
+            colorPlayers[i].SetAttackCount(split[i]);
         }
-
-        int totalAssigned = split.Sum();
-
     }
 
 
@@ -408,7 +398,7 @@ public class GameManager : MonoBehaviour
       
         if (currentLevelIndex < levelData.levelEntries.Length ) { 
            
-            Debug.Log("inside if Condition Level up : " );
+           
             currentLevelIndex++;
             PlayerPrefs.SetInt("currentLevelIndex", currentLevelIndex);
             StartCoroutine(InitializeLevel());
@@ -417,4 +407,5 @@ public class GameManager : MonoBehaviour
         }
     
     }
+    
 }

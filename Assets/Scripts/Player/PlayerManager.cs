@@ -35,17 +35,7 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        foreach (var loc in moveLocations)
-        {
-            locationOccupied[loc] = false;
-        }
-
-        foreach (var mat in GameManager.Instance.CurrentLevelData.colors) {
-            string colorName = mat.name.Replace(" (Instance)", "");
-            if (!colorAttackLock.ContainsKey(colorName))
-                colorAttackLock[colorName] = false;
-        }
-
+        ResetPlayerState();
         SpawnPlayers();
     }
     public void ClearAllPlayers() {
@@ -53,19 +43,35 @@ public class PlayerManager : MonoBehaviour
         touchedPlayers= new List<GameObject>();
 
     }
-    public void CreateNewPlayers() {
-        foreach (var loc in moveLocations)
-        {
-            locationOccupied[loc] = false;
-        }
+    public void ResetPlayerState()
+    {
+        touchedPlayers.Clear();
 
+        // Recreate a new list (important to avoid lingering references)
+        touchedPlayers = new List<GameObject>();
+
+        locationOccupied.Clear();
+        foreach (var loc in moveLocations)
+            locationOccupied[loc] = false;
+
+        colorAttackLock.Clear();
         foreach (var mat in GameManager.Instance.CurrentLevelData.colors)
         {
             string colorName = mat.name.Replace(" (Instance)", "");
-            if (!colorAttackLock.ContainsKey(colorName))
-                colorAttackLock[colorName] = false;
+            colorAttackLock[colorName] = false;
         }
-        SpawnPlayers(); 
+    }
+    public void CreateNewPlayers()
+    {
+        // Destroy all existing player objects first
+        GameObject[] oldPlayers = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject player in oldPlayers)
+        {
+            Destroy(player);
+        }
+
+        ResetPlayerState();
+        SpawnPlayers();
     }
     void SpawnPlayers()
     {
@@ -233,31 +239,26 @@ public class PlayerManager : MonoBehaviour
             List<PlayerAttack> colorPlayers = kvp.Value;
             List<Transform> colorEnemies = GameManager.Instance.GetFirstRowEnemiesByColor(color);
 
-            if (colorEnemies == null || colorEnemies.Count == 0)
-            {
-                
-                continue;
-            }
+            if (colorEnemies == null || colorEnemies.Count == 0) continue;
 
-            int totalEnemies = colorEnemies.Count;
-            int totalAttackSlots = colorPlayers.Sum(p => p.attackCount);
             int enemyIndex = 0;
 
-            // Assign targets sequentially based on attack count
             foreach (var player in colorPlayers)
             {
                 List<Transform> assigned = new List<Transform>();
 
-                for (int i = 0; i < player.attackCount && enemyIndex < totalEnemies; i++)
+                for (int i = 0; i < player.attackCount && enemyIndex < colorEnemies.Count; i++)
                 {
                     assigned.Add(colorEnemies[enemyIndex]);
                     enemyIndex++;
                 }
 
-               
+                // Pass assigned enemies to the player
+                player.AssignTargets(assigned);
             }
         }
     }
+
 
 
 
